@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Horizontal Mindmap — Array & String Algorithms</title>
+
+    <!-- ✅ Include D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- ✅ Tailwind CDN for styling (optional) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #000000;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      svg {
+        width: 100%;
+        height: 100vh;
+      }
+
+      .node text {
+        fill: white;
+        font-size: 14px;
+      }
+
+      .link {
+        fill: none;
+        stroke: #4a5568;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="w-full h-screen bg-black rounded-md shadow p-4 overflow-hidden">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-lg font-semibold text-white">
+          Mindmap (Array & String Algorithms)
+        </h3>
+        <div class="text-sm text-gray-400">Click nodes to expand / center</div>
+      </div>
+      <svg id="mindmap"></svg>
+    </div>
+
+    <script>
+      const data = {
+        name: "NOTES",
+        children: [
+          {
+            name: "DS",
+            children: [
+              {
+                name: "Array",
+                children: [
+                  { name: "Plus One" },
+                  { name: "Next Permutation" },
+                  { name: "Rotate Array" },
+                  { name: "First Missing Positive" },
+                  { name: "Find the Winner of Circular Game" },
+                  { name: "Partition Array into Disjoint Intervals" },
+                ],
+              },
+              {
+                name: "String",
+                children: [
+                  { name: "Add Strings" },
+                  { name: "Multiply String" },
+                  { name: "Reformat the String" },
+                  { name: "Validate IP Address" },
+                  { name: "Zig Zag Conversion" },
+                  { name: "Text Justification" },
+                ],
+              },
+              {
+                name: "Matrix",
+              },
+              {
+                name: "Classical Stack",
+                children: [{ name: "Monotonic Stack" }],
+              },
+              {
+                name: "Linked List (CRUD)",
+                children: [
+                  { name: "Remove Nth Node from End of List" },
+                  { name: "Delete All Occurrences of a Key in DLL" },
+                  { name: "Remove Duplicates from Sorted List" },
+                  { name: "Remove Duplicates from Sorted List II" },
+                ],
+              },
+              {
+                name: "Linked List (3 Pointers)",
+                children: [
+                  { name: "Reverse Linked List" },
+                  { name: "Reverse Linked List II" },
+                  { name: "Reorder List" },
+                  { name: "Reverse Nodes in K-Group" },
+                  { name: "Palindrome Linked List" },
+                  { name: "Swap Nodes in Pair" },
+                ],
+              },
+              {
+                name: "Fast & Slow Pointer",
+                children: [
+                  { name: "Linked List Cycle" },
+                  { name: "Linked List Cycle II" },
+                  { name: "Find the Duplicate Number" },
+                  { name: "Happy Number" },
+                  { name: "Length of Loop in Linked List" },
+                  { name: "Remove Loop in Linked List" },
+                ],
+              },
+            ],
+          },
+          {
+            name: "Algorithms and Techniques",
+            children: [
+              {
+                name: "Two Pointers",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "3 Sum" },
+                  { name: "3 Sum Closest" },
+                  { name: "Container With Most Water" },
+                  { name: "Rain Water Trapping" },
+                  { name: "Longest Palindromic Substring" },
+                  { name: "Number of Subarrays with Bounded Maximum" },
+                ],
+              },
+              {
+                name: "Sliding Window",
+                children: [
+                  {
+                    name: "Fixed Size",
+                    children: [
+                      { name: "Explanation Page" },
+                      { name: "Maximum Average Subarray" },
+                      { name: "Maximum Sum of Distinct Subarrays of Length K" },
+                      { name: "Count Occurrence of Anagram" },
+                      { name: "Permutation of String" },
+                      { name: "Maximum Points from Cards" },
+                      { name: "Maximum Number of Occurrences of a Substring" },
+                      { name: "Sliding Subarray Beauty" },
+                      { name: "Grumpy Bookstore Owner" },
+                    ],
+                  },
+                  {
+                    name: "Variable Size",
+                    children: [
+                      { name: "Explanation Page" },
+                      { name: "Minimum Size Subarray Sum" },
+                      { name: "Minimum Operations to Reduce X to 0" },
+                      {
+                        name: "Longest Substring Without Repeating Characters",
+                      },
+                      { name: "Longest Repeating Character Replacement" },
+                      { name: "Fruit Into Baskets" },
+                      { name: "Minimum Consecutive Cards to Pick Up" },
+                      { name: "Maximum Erasure Value" },
+                      { name: "Frequency of Most Frequent Element" },
+                      { name: "Minimum Window Substring" },
+                      { name: "Substring with Concatenation of All Words" },
+                    ],
+                  },
+                ],
+              },
+              {
+                name: "HashMap",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "2 Sum" },
+                  { name: "Find the Difference" },
+                  { name: "Sum Array Freq" },
+                  { name: "Subarray Sum Equals K" },
+                  { name: "Longest Subarray Sum Zero" },
+                  { name: "Group Anagrams" },
+                ],
+              },
+              {
+                name: "HashSet",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Find All Duplicates" },
+                  { name: "Find All Numbers Disappeared" },
+                  { name: "Intersection" },
+                  { name: "Valid Sudoku" },
+                  { name: "Longest Consecutive Sequence" },
+                  { name: "Binary Code" },
+                ],
+              },
+              {
+                name: "DNF",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Sort Array by Parity" },
+                  { name: "Segregate 0s and 1s" },
+                  { name: "Sort Colors" },
+                  { name: "Three Way Partitioning" },
+                ],
+              },
+              {
+                name: "Merging",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Add Two Numbers" },
+                  { name: "Add Two Numbers II" },
+                  { name: "Merge In Between Linked List" },
+                  { name: "Sort List" },
+                  { name: "Merge Two Sorted List" },
+                  { name: "Merge K Sorted Lists" },
+                ],
+              },
+              {
+                name: "Prefix Sum",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Range Sum Query" },
+                  { name: "XOR Queries of Subarray" },
+                  { name: "Corporate Flight Booking" },
+                  { name: "Car Pooling" },
+                ],
+              },
+              {
+                name: "Intervals",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Insert Intervals" },
+                  { name: "Merge Intervals" },
+                  { name: "Interval Intersection" },
+                  { name: "Minimum Arrows to Burst Balloons" },
+                  { name: "Meeting Room II" },
+                  { name: "Meeting Room III" },
+                ],
+              },
+              {
+                name: "Greedy",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Jump Game" },
+                  { name: "Maximum Ice Cream Bars" },
+                  { name: "Gas Station" },
+                  { name: "Mice and Cheese" },
+                  { name: "Maximum Matching of Players with Trainers" },
+                  { name: "Maximum Bags with Full Capacity of Rocks" },
+                  { name: "Candy" },
+                  { name: "Boat to Save People" },
+                ],
+              },
+              {
+                name: "Z-Algorithm",
+                children: [
+                  { name: "Explanation Page" },
+                  { name: "Find Index of First Occurrence" },
+                  { name: "Longest Happy Prefix" },
+                  { name: "Shortest Palindrome" },
+                  { name: "Sum of Scores of Built String" },
+                ],
+              },
+            ],
+          },
+        ],
+      };
+      const svg = d3.select("#mindmap");
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const margin = { top: 50, right: 120, bottom: 50, left: 100 };
+
+      const g = svg
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+      const colorScale = [
+        "#3b82f6",
+        "#10b981",
+        "#f59e0b",
+        "#ef4444",
+        "#8b5cf6",
+        "#ec4899",
+      ];
+
+      const root = d3.hierarchy(data);
+      root.x0 = 0;
+      root.y0 = 0;
+
+      const treeLayout = d3.tree().nodeSize([100, 300]);
+      const zoom = d3
+        .zoom()
+        .scaleExtent([0.3, 2.5])
+        .on("zoom", (event) => g.attr("transform", event.transform));
+      svg.call(zoom);
+
+      if (root.children) root.children.forEach(collapse);
+      update(root);
+      centerInitialNode(root);
+
+      function collapse(d) {
+        if (d.children) {
+          d._children = d.children;
+          d._children.forEach(collapse);
+          d.children = null;
+        }
+      }
+
+      function update(source) {
+        const tree = treeLayout(root);
+        const nodes = tree.descendants();
+        const links = tree.links();
+        nodes.forEach((d) => (d.y = d.depth * 250));
+
+        const node = g
+          .selectAll("g.node")
+          .data(nodes, (d) => d.id || (d.id = ++window.i || 1));
+
+        const nodeEnter = node
+          .enter()
+          .append("g")
+          .attr("class", "node cursor-pointer")
+          .attr(
+            "transform",
+            (d) =>
+              `translate(${source.y0 || source.y},${source.x0 || source.x})`
+          )
+          .on("click", (event, d) => {
+            if (d.children) {
+              d._children = d.children;
+              d.children = null;
+            } else if (d._children) {
+              d.children = d._children;
+              d._children = null;
+            }
+            update(d);
+            if (d.children || d._children) centerNode(d);
+          });
+
+        const texts = nodeEnter
+          .append("text")
+          .attr("dy", 4)
+          .attr("text-anchor", "middle")
+          .style("fill", "white")
+          .style("font-size", "14px")
+          .text((d) => d.data.name);
+
+        nodeEnter.each(function (d) {
+          const textNode = d3.select(this).select("text").node();
+          const bbox = textNode.getBBox();
+          const paddingX = 15,
+            paddingY = 10;
+          d3.select(this)
+            .insert("rect", "text")
+            .attr("x", -bbox.width / 2 - paddingX)
+            .attr("y", -bbox.height / 2 - paddingY / 2)
+            .attr("width", bbox.width + paddingX * 2)
+            .attr("height", bbox.height + paddingY)
+            .attr("rx", 6)
+            .attr("ry", 6)
+            .style("fill", (d) => colorScale[d.depth % colorScale.length])
+            .style("stroke", "#374151")
+            .style("stroke-width", 2);
+        });
+
+        nodeEnter
+          .merge(node)
+          .transition()
+          .duration(400)
+          .attr("transform", (d) => `translate(${d.y},${d.x})`);
+
+        node
+          .exit()
+          .transition()
+          .duration(300)
+          .attr("transform", (d) => `translate(${source.y},${source.x})`)
+          .remove();
+
+        const link = g.selectAll("path.link").data(links, (d) => d.target.id);
+
+        link
+          .enter()
+          .insert("path", "g")
+          .attr("class", "link")
+          .attr("d", (d) => {
+            const o = { x: source.x0 || source.x, y: source.y0 || source.y };
+            return diagonal({ source: o, target: o });
+          })
+          .merge(link)
+          .transition()
+          .duration(400)
+          .attr("d", diagonal);
+
+        link
+          .exit()
+          .transition()
+          .duration(300)
+          .attr("d", (d) => {
+            const o = { x: source.x, y: source.y };
+            return diagonal({ source: o, target: o });
+          })
+          .remove();
+
+        nodes.forEach((d) => {
+          d.x0 = d.x;
+          d.y0 = d.y;
+        });
+      }
+
+      function diagonal(d) {
+        return `M${d.source.y},${d.source.x}
+              C${(d.source.y + d.target.y) / 2},${d.source.x}
+               ${(d.source.y + d.target.y) / 2},${d.target.x}
+               ${d.target.y},${d.target.x}`;
+      }
+
+      // Center node smoothly on the left side of the screen
+      function centerNode(source) {
+        const transform = d3.zoomTransform(svg.node());
+        const x = source.x;
+        const y = source.y;
+        const scale = transform.k;
+
+        const centerX = width * 0.2; // Position on the left (20% from left edge)
+        const centerY = height / 2;
+
+        const translateX = centerX - y * scale;
+        const translateY = centerY - x * scale;
+
+        svg
+          .transition()
+          .duration(600)
+          .call(
+            zoom.transform,
+            d3.zoomIdentity.translate(translateX, translateY).scale(scale)
+          );
+      }
+
+      // Center the root node on the left side on initial render
+      function centerInitialNode(source) {
+        const initialScale = 1; // You can tweak this if you want initial zoom-out
+        const x = source.x0 || 0;
+        const y = source.y0 || 0;
+
+        const centerX = width * 0.2; // Position on the left (20% from left edge)
+        const centerY = height / 2;
+
+        const translateX = centerX - y * initialScale;
+        const translateY = centerY - x * initialScale;
+
+        svg.call(
+          zoom.transform,
+          d3.zoomIdentity.translate(translateX, translateY).scale(initialScale)
+        );
+      }
+    </script>
+  </body>
+</html>
