@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DSA Mindmap</title>
+    <title>DSA Mindmap</title>
 
     <!-- ✅ Include D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
@@ -41,6 +42,7 @@
     <div class="w-full h-screen bg-black rounded-md shadow p-4 overflow-hidden">
       <div class="flex items-center justify-between mb-2">
         <h3 class="text-lg font-semibold text-white">
+          Mindmap (Data Structures & Algorithms)
           Mindmap (Data Structures & Algorithms)
         </h3>
         <div class="flex items-center gap-4">
@@ -486,7 +488,7 @@
           .attr("text-anchor", "middle")
           .style("fill", "white")
           .style("font-size", "14px")
-          .text((d) => d.data.name);
+          .text(d => d.data.name);
 
         // Add rectangles only for new nodes
         nodeEnter.each(function (d) {
@@ -503,7 +505,7 @@
             .attr("height", bbox.height + paddingY)
             .attr("rx", 6)
             .attr("ry", 6)
-            .style("fill", (d) => colorScale[d.depth % colorScale.length])
+            .style("fill", d => colorScale[d.depth % colorScale.length])
             .style("stroke", "#374151")
             .style("stroke-width", 2);
         });
@@ -547,7 +549,7 @@
           .enter()
           .insert("path", "g")
           .attr("class", "link")
-          .attr("d", (d) => {
+          .attr("d", d => {
             const o = { x: source.x0 || source.x, y: source.y0 || source.y };
             return diagonal({ source: o, target: o });
           });
@@ -560,7 +562,7 @@
           .exit()
           .transition()
           .duration(300)
-          .attr("d", (d) => {
+          .attr("d", d => {
             const o = { x: source.x, y: source.y };
             return diagonal({ source: o, target: o });
           })
